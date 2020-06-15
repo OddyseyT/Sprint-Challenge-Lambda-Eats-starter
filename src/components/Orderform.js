@@ -50,6 +50,7 @@ const Orderform = props => {
           
         };
       const handleToppings = event => {
+          event.persist();
           setFormData({ ...formData, [event.target.name]: event.target.checked })
       }
 
@@ -88,26 +89,26 @@ const Orderform = props => {
                 </FormGroup>
                 <FormGroup>
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret >{formData.size === "" ? "Size" : formData.size}
+            <DropdownToggle data-cy="dropdownbtn" caret >{formData.size === "" ? "Size" : formData.size}
       </DropdownToggle>
       
       <DropdownMenu>
      
-            <option value="small" onClick={() => {
+            <option value="Small" onClick={() => {
                 toggle();
-                setFormData({...formData, size: "small"})
+                setFormData({...formData, size: "Small"})
             }}>Small</option>
-              <option value="medium" onClick={() => {
+              <option value="Medium" onClick={() => {
                 toggle();
-                setFormData({...formData, size: "medium"})
+                setFormData({...formData, size: "Medium"})
             }}>Medium</option>
-              <option value="large" onClick={() => {
+              <option value="Large" data-cy="Large" onClick={() => {
                 toggle();
-                setFormData({...formData, size: "large"})
+                setFormData({...formData, size: "Large"})
             }}>Large</option>
-              <option value="xLarge" onClick={() => {
+              <option value="Extra Large" onClick={() => {
                 toggle();
-                setFormData({...formData, size: "xLarge"})
+                setFormData({...formData, size: "Extra Large"})
             }}>Extra Large</option>
               </DropdownMenu>
             </Dropdown>
@@ -171,6 +172,12 @@ const Orderform = props => {
               <Label check>
                   <Input type="checkbox" data-cy="tomatoes" id="tomatoes" name="tomatoes" checked={formData.tomatoes} onChange={handleToppings}/> {' '}
                   Fresh tomatoes
+              </Label>
+          </FormGroup>
+          <FormGroup check>
+              <Label check>
+                  <Input type="checkbox" data-cy="pineapple" id="pineapple" name="pineapple" checked={formData.pineapple} onChange={handleToppings}/> {' '}
+                  Pineapple
               </Label>
           </FormGroup>
           <FormGroup check>
